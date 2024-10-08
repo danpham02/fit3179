@@ -1,0 +1,62 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "data": {
+      "url": "path/to/australia-geojson-file.json",
+      "format": {
+        "type": "topojson", 
+        "feature": "regions"  
+      }
+    },
+    "layer": [
+      {
+        "mark": "geoshape",
+        "encoding": {
+          "color": {
+            "field": "hospital_density", 
+            "type": "quantitative",
+            "scale": {
+              "scheme": "blues"
+            }
+          }
+        }
+      },
+      {
+        "data": {
+          "url": "path/to/hospital-data.csv"
+        },
+        "mark": "circle",
+        "encoding": {
+          "longitude": {
+            "field": "Longitude"
+          },
+          "latitude": {
+            "field": "Latitude"
+          },
+          "size": {
+            "field": "Beds",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "Sector",
+            "type": "nominal",
+            "scale": {
+              "domain": ["Public", "Private"],
+              "range": ["#1f77b4", "#ff7f0e"]
+            }
+          },
+          "tooltip": [
+            {"field": "Hospital name", "type": "nominal"},
+            {"field": "Beds", "type": "quantitative"},
+            {"field": "Sector", "type": "nominal"},
+            {"field": "Description", "type": "nominal"}
+          ]
+        }
+      }
+    ],
+    "projection": {
+      "type": "mercator" 
+    }
+  }
+  
