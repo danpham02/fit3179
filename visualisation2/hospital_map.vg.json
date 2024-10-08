@@ -3,12 +3,14 @@
     "width": 800,
     "height": 600,
     "data": {
-      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/AUS_2016_AUST.topojson",
+      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/STE_2016_AUST.topojson",
       "format": {
         "type": "topojson", 
         "feature": "AUS_2016_AUST"  
       }
     },
+    "layer": [
+      {
     "mark": {
       "type": "geoshape",
       "fill": "lightgray",
@@ -17,5 +19,40 @@
     "projection": {
       "type": "mercator"
     }
+  },
+  {
+    "data": {
+      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/myhospitals-contact-details.csv"
+    },
+    "mark": "circle",
+    "encoding": {
+      "longitude": {"field": "Longitude"},
+      "latitude": {"field": "Latitude"},
+      "size": {
+        "field": "Beds",
+        "type": "nominal", 
+        "scale": {
+          "domain": ["<50", "50-99", "100-199", "200-500", ">500"],
+          "range": [50, 100, 200, 300, 400]  
+        }
+      },
+      "color": {
+        "field": "Sector",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Public", "Private"],
+          "range": ["#1f77b4", "#ff7f0e"]
+        }
+      },
+      "tooltip": [
+        {"field": "Hospital name", "type": "nominal"},
+        {"field": "Beds", "type": "nominal"},
+        {"field": "Sector", "type": "nominal"},
+        {"field": "Description", "type": "nominal"}
+      ]
+    }
+  }
+
+  ]
   }
   
