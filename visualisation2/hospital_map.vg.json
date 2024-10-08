@@ -3,10 +3,10 @@
     "width": 800,
     "height": 600,
     "data": {
-      "url": "path/to/australia-geojson-file.json",
+      "url": "AUS_2016_AUST.topojson",
       "format": {
         "type": "topojson", 
-        "feature": "regions"  
+        "feature": "AUS_2016_AUST"  
       }
     },
     "layer": [
@@ -24,7 +24,7 @@
       },
       {
         "data": {
-          "url": "path/to/hospital-data.csv"
+          "url": "myhospitals-contact-details.csv"
         },
         "mark": "circle",
         "encoding": {
