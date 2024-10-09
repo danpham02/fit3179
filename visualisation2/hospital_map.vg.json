@@ -22,12 +22,12 @@
         "input": "select",
         "options": [
           "Australia",
-          "New South Wales",
-          "Victoria",
-          "Queensland",
-          "South Australia",
-          "Western Australia",
-          "Tasmania"
+          "NSW",
+          "Vic",
+          "Qld",
+          "SA",
+          "WA",
+          "Tas"
         ],
         "labels": [
           "Australia",
@@ -43,7 +43,16 @@
     {
       "name": "stateCoordinates",
       "value": {"center": [133, -28], "scale": 1000},
-      "expr": "selectedState == 'Australia' ? {center: [133, -28], scale: 1000} : selectedState == 'New South Wales' ? {center: [147, -33], scale: 2500} : selectedState == 'Victoria' ? {center: [145, -37], scale: 3000} : selectedState == 'Queensland' ? {center: [144, -20], scale: 2000} : selectedState == 'South Australia' ? {center: [135, -30], scale: 1800} : selectedState == 'Western Australia' ? {center: [121, -27], scale: 1500} : selectedState == 'Tasmania' ? {center: [147, -42], scale: 3500} : {center: [133, -28], scale: 1000}"
+      "expr": "selectedState == 'Australia' ? {center: [133, -28], scale: 1000} : selectedState == 'NSW' ? {center: [147, -33], scale: 2500} : selectedState == 'Vic' ? {center: [145, -37], scale: 3000} : selectedState == 'Qld' ? {center: [144, -20], scale: 2000} : selectedState == 'SA' ? {center: [135, -30], scale: 1800} : selectedState == 'WA' ? {center: [121, -27], scale: 1500} : selectedState == 'Tas' ? {center: [147, -42], scale: 3500} : {center: [133, -28], scale: 1000}"
+    },
+    {
+      "name": "selectedSector",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "Public", "Private"],
+        "labels": ["All Hospitals", "Public Hospitals", "Private Hospitals"]
+      }
     }
   ],
     "layer": [
@@ -58,6 +67,11 @@
     "data": {
       "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/myhospitals-contact-details.csv"
     },
+    "transform": [
+        {
+          "filter": "(selectedState == 'Australia' || datum.State == selectedState) && (selectedSector == 'All' || datum.Sector == selectedSector)"
+        }
+      ],
     "mark": "circle",
     "encoding": {
       "longitude": {"field": "Longitude"},
