@@ -12,7 +12,7 @@
     "projection": {
       "type": "mercator",
       "center": {"expr": "stateCoordinates.center"}, 
-      "scale": {"expr": "stateCoordinates.scale"}
+      "scale": {"expr": "zoom"}
     },
     "params": [
     {
@@ -52,6 +52,16 @@
         "input": "select",
         "options": ["All", "Public", "Private"],
         "labels": ["All Hospitals", "Public Hospitals", "Private Hospitals"]
+      }
+    },
+    {
+      "name": "zoom",
+      "value": 1000,  
+      "bind": {
+        "input": "range",
+        "min": 500,  
+        "max": 5000, 
+        "step": 100 
       }
     }
   ],
