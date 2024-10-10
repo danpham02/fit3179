@@ -1,0 +1,24 @@
+#hospital_map {
+	top:100px;
+	bottom: 100px; 
+	left: 100px;
+	right: 100px;
+	/*height: 1000px;
+	width: 800px;*/
+}
+
+.page {
+    width: 850px;
+    background-color: white;
+    margin: auto;
+    padding: 50px;
+    padding-top: 35px;
+  }
+
+.pure-g {
+    margin-bottom: 40px;
+  }
+
+  body *{
+    font-family: 'Open Sans', sans-serif;
+  }
