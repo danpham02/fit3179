@@ -1,1 +1,103 @@
-<meta http-equiv="refresh" content="0"; url="http://danpham02.github.io/fit3179/visualisation2/index.html"/>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Healthcare infrastructure in Australia</h1>
+        <p>Australia's healthcare system faces a number of challenges, particularly in ensuring equal access to services across regions. 
+          The distribution of hospitals and their capacities vary widely, with urban areas generally having better resources than rural regions. 
+          Healthcare funding also differs across states, reflecting population needs and local healthcare policies.</p>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div id="hospital_map" class="vis-container"></div>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h2>Private and Public Hospital in Australia</h2>
+          <p>Public hospitals are generally government-funded and provide services to all Australians, 
+            often focusing on emergency and specialized care. Private hospitals, while offering more flexibility 
+            and shorter wait times, usually operate on a fee-for-service basis, with many patients relying on private health insurance.
+            Accessibility to healthcare varies significantly across different regions, with metropolitan areas typically having better 
+            coverage and larger hospital capacities compared to rural and remote regions.</p>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="expenditure_chart" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+        <h2>What makes up hospital expenditure</h2>
+          <p>
+            In Australia, healthcare funding is shared between federal and state governments, with each state managing its own public
+             hospital system. The expenditure on healthcare can vary significantly depending on population size, healthcare demands, 
+             and regional challenges</p>
+          </div>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <h2>Hospital performance</h2>
+          <p>
+            Emergency waiting times are an important measure of a healthcare system's efficiency and its ability to provide timely care. 
+            In emergency departments, long waiting times can result in delayed care, which can impact patient outcomes. 
+            The 90th percentile waiting time is used to represent the longest waiting times experienced by 10% of patients</p>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="waittime_chart" class="vis-container"></div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+
+  <script type="text/javascript">
+    var spec1 = "js/hospital_map.vg.json";
+    vegaEmbed('#hospital_map', spec1).then(function (result) {
+    }).catch(console.error);
+    var spec2 = "js/expenditure_chart.vg.json";
+    vegaEmbed('#expenditure_chart', spec2).then(function (result) {
+    }).catch(console.error);
+    var spec3 = "js/waittime_chart.vg.json";
+    vegaEmbed('#waittime_chart', spec3).then(function (result) {
+    }).catch(console.error);
+  </script>
+</body>
+
+</html>
