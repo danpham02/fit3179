@@ -1,7 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 600,
+    "height": 600,
     "data": {
-      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/data/aihw-93-Health-expenditure-datacube-2021_22.csv",
+      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/data/aihw-93-Health-expenditure-datacube-2021_22_modified.csv",
       "format": {"type": "csv"}
     },
     "transform": [
@@ -18,23 +20,50 @@
         "groupby": ["Jurisdiction"]
       }
     ],
-    "mark": "bar",
+    "mark": {
+      "type": "bar",
+      "width": 40  
+    },
     "encoding": {
       "x": {
         "field": "Jurisdiction",
         "type": "nominal",
-        "title": "State or Territory"
+        "title": "State or Territory",
+        "axis": {
+          "labelAngle": 0,  
+          "labelFontSize": 12  
+        }
       },
       "y": {
         "field": "TotalExpenditure",
         "type": "quantitative",
-        "title": "Total Healthcare Expenditure ($)"
+        "title": "Total Healthcare Expenditure (Million $)",
+        "axis": {
+          "format": ",f",  
+          "labelFontSize": 12
+        }
+      },
+      "color": {
+        "field": "Jurisdiction",  
+        "type": "nominal",
+        "legend": {"title": "State", "orient": "top-right"}  
       },
       "tooltip": [
         {"field": "Jurisdiction", "type": "nominal", "title": "State"},
-        {"field": "TotalExpenditure", "type": "quantitative", "title": "Total Expenditure ($)"}
+        {
+          "field": "TotalExpenditure",
+          "type": "quantitative",
+          "title": "Total Expenditure ($ Millions)",
+          "format": ",.2f"  
+        }
       ]
     },
-    "title": "Healthcare Expenditure by State (Hospitals, 2021-22)"
+    "title": {
+      "text": "Healthcare Expenditure by State (Hospitals, 2021-22)",
+      "subtitle": "Data Source: AIHW.gov.au",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "anchor": "middle"
+    }
   }
   
