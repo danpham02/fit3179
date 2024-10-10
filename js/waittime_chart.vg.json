@@ -3,7 +3,7 @@
     "width": 350,
     "height": 350,
     "data": {
-      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/data/Emergency-Department-Care-2021-22-waittime.csv",
+      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-waittime.csv",
       "format": {"type": "csv"}
     },
     "transform": [

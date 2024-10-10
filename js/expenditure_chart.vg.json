@@ -3,7 +3,7 @@
     "width": 300,
     "height": 300,
     "data": {
-      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/data/aihw-93-Health-expenditure-datacube-2021_22_modified.csv",
+      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/aihw-93-Health-expenditure-datacube-2021_22_modified.csv",
       "format": {"type": "csv"}
     },
     "transform": [
