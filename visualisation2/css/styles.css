@@ -1,10 +1,5 @@
 #hospital_map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
+
 }
 
 .page {
@@ -19,6 +14,10 @@
     margin-bottom: 40px;
   }
 
-  body *{
-    font-family: 'Open Sans', sans-serif;
-  }
+body *{
+font-family: 'Open Sans', sans-serif;
+}
+
+.vis-container {
+width: 100%;
+}
