@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/data/aihw-93-Health-expenditure-datacube-2021_22.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "filter": "datum.Year === '2021-22' && datum.Sector === 'Hospitals'"
+      }
+    ],
+    "mark": "text",
+    "encoding": {
+      "x": {"field": "Jurisdiction", "type": "nominal"},
+      "y": {"field": "Current amount ($)", "type": "quantitative"},
+      "text": {"field": "Current amount ($)", "type": "quantitative", "format": ","}
+    }
+  }
+  
