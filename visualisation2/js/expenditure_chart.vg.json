@@ -6,14 +6,35 @@
     },
     "transform": [
       {
-        "filter": "datum.Year === '2021-22' && datum.Sector === 'Hospitals'"
+        "filter": "datum.Year == '2021-22'"
+      },
+      {
+        "filter": "datum.Sector == 'Hospitals'"
+      },
+      {
+        "aggregate": [
+          {"op": "sum", "field": "Current amount (million)", "as": "TotalExpenditure"}
+        ],
+        "groupby": ["Jurisdiction"]
       }
     ],
-    "mark": "text",
+    "mark": "bar",
     "encoding": {
-      "x": {"field": "Jurisdiction", "type": "nominal"},
-      "y": {"field": "Current amount ($)", "type": "quantitative"},
-      "text": {"field": "Current amount ($)", "type": "quantitative", "format": ","}
-    }
+      "x": {
+        "field": "Jurisdiction",
+        "type": "nominal",
+        "title": "State or Territory"
+      },
+      "y": {
+        "field": "TotalExpenditure",
+        "type": "quantitative",
+        "title": "Total Healthcare Expenditure ($)"
+      },
+      "tooltip": [
+        {"field": "Jurisdiction", "type": "nominal", "title": "State"},
+        {"field": "TotalExpenditure", "type": "quantitative", "title": "Total Expenditure ($)"}
+      ]
+    },
+    "title": "Healthcare Expenditure by State (Hospitals, 2021-22)"
   }
   
