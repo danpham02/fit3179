@@ -1,0 +1,45 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/visualisation2/data/Emergency-Department-Care-2021-22-waittime.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "fold": ["Median waiting time (minutes)", "90th percentile waiting time (minutes)"],
+        "as": ["Type", "Waiting Time"]
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "State",
+        "type": "nominal",
+        "axis": {"title": "State or Territory"}
+      },
+      "y": {
+        "field": "Waiting Time",
+        "type": "quantitative",
+        "axis": {"title": "Waiting Time (Minutes)"}
+      },
+      "color": {
+        "field": "Type",
+        "type": "nominal",
+        "legend": {"title": "Waiting Time Type"},
+        "scale": {"range": ["#4C78A8", "#F58518"]}  
+      },
+      "tooltip": [
+        {"field": "State", "type": "nominal", "title": "State"},
+        {"field": "Type", "type": "nominal", "title": "Waiting Time Type"},
+        {"field": "Waiting Time", "type": "quantitative", "title": "Time (Minutes)"}
+      ]
+    },
+    "title": {
+      "text": "Comparison of Median and 90th Percentile Waiting Times",
+      "subtitle": "Across States for Emergency Presentations (2021-22)",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "anchor": "middle"
+    }
+  }
+  
