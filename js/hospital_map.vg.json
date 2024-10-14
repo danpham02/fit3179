@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 750,
-    "height": 650,
+    "height": 700,
     "data": {
       "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/js/STE_2016_AUST_COMPRESSED.topojson",
       "format": {
@@ -61,7 +61,7 @@
         "input": "range",
         "min": 1000,  
         "max": 16000, 
-        "step": 1000 
+        "step": 500 
       }
     }
   ],
