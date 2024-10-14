@@ -1,0 +1,37 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-presentations.csv",
+      "format": {"type": "csv"}
+    },
+    "mark": "line",
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "nominal",
+        "axis": {"title": "Year"}
+      },
+      "y": {
+        "field": "Presentations",
+        "type": "quantitative",
+        "axis": {"title": "Emergency Department Presentations"}
+      },
+      "color": {
+        "field": "States",
+        "type": "nominal",
+        "legend": {"title": "State"}
+      },
+      "tooltip": [
+        {"field": "States", "type": "nominal", "title": "State"},
+        {"field": "Year", "type": "nominal", "title": "Year"},
+        {"field": "Presentations", "type": "quantitative", "title": "Emergency Presentations"}
+      ]
+    },
+    "title": {
+      "text": "Emergency Department Presentations by State (2017-22)",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "anchor": "middle"
+    }
+  }
+  
