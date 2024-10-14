@@ -1,13 +1,35 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 700,
   "data": {
     "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-visitoutcome.csv",
     "format": {"type": "csv"}
   },
   "transform": [
     {
-      "fold": ["Admitted", "Departed", "Referred", "Did not wait", "Left at own risk", "Died in emergency department", "Dead on arrival", "Registered but not attended", "Not reported"],
+      "fold": [
+        "Admitted to this hospital", 
+        "Departed without being admitted or referred", 
+        "Referred to another hospital for admission", 
+        "Did not wait", 
+        "Left at own risk", 
+        "Died in emergency department", 
+        "Dead on arrival", 
+        "Registered, advised of another health care service and left without being attended to", 
+        "Not reported"
+      ],
       "as": ["Status", "Count"]
+    },
+    {
+      "joinaggregate": [{
+        "op": "sum", "field": "Count", "as": "TotalPresentations"
+      }],
+      "groupby": ["State"]
+    },
+    {
+      "calculate": "datum.Count / datum.TotalPresentations * 100",
+      "as": "Percentage"
     }
   ],
   "mark": "bar",
@@ -18,9 +40,9 @@
       "axis": {"title": "State or Territory"}
     },
     "y": {
-      "field": "Count",
+      "field": "Percentage",
       "type": "quantitative",
-      "axis": {"title": "Number of Presentations"}
+      "axis": {"title": "Percentage of Presentations (%)"}
     },
     "color": {
       "field": "Status",
@@ -31,11 +53,11 @@
     "tooltip": [
       {"field": "State", "type": "nominal", "title": "State"},
       {"field": "Status", "type": "nominal", "title": "Status"},
-      {"field": "Count", "type": "quantitative", "title": "Number of Presentations"}
+      {"field": "Percentage", "type": "quantitative", "title": "Percentage (%)"}
     ]
   },
   "title": {
-    "text": "Emergency Department Presentations by Status",
+    "text": "Normalized Emergency Department Presentations by Status",
     "subtitle": "Across States and Territories (2021-22)",
     "fontSize": 16,
     "fontWeight": "bold",
