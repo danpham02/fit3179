@@ -4,6 +4,8 @@
       "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-visittype.csv",
       "format": {"type": "csv"}
     },
+    "width": 750,
+    "height": 700,
     "transform": [
       {
         "fold": ["Emergency presentation", "Return visit, planned", "Pre-arranged admission", "Dead on arrival", "Not reported"],
@@ -20,7 +22,8 @@
       "y": {
         "field": "Presentations",
         "type": "quantitative",
-        "axis": {"title": "Number of Presentations"}
+        "stack": "normalize", 
+        "axis": {"title": "Proportion of Presentations (%)", "format": "%"}
       },
       "color": {
         "field": "Type",
@@ -35,7 +38,7 @@
       ]
     },
     "title": {
-      "text": "Emergency Department Presentations by Type of Visit",
+      "text": "Proportion of Emergency Department Presentations by Type of Visit",
       "subtitle": "Across States and Territories (2021-22)",
       "fontSize": 16,
       "fontWeight": "bold",
