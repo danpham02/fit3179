@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-visitoutcome.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "fold": ["Admitted", "Departed", "Referred", "Did not wait", "Left at own risk", "Died in emergency department", "Dead on arrival", "Registered but not attended", "Not reported"],
+      "as": ["Status", "Count"]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "State",
+      "type": "nominal",
+      "axis": {"title": "State or Territory"}
+    },
+    "y": {
+      "field": "Count",
+      "type": "quantitative",
+      "axis": {"title": "Number of Presentations"}
+    },
+    "color": {
+      "field": "Status",
+      "type": "nominal",
+      "legend": {"title": "Emergency Department Status"},
+      "scale": {"range": ["#FFB6C1", "#4682B4", "#FFD700", "#FF6347", "#98FB98", "#DA70D6", "#6495ED", "#8A2BE2", "#00FA9A"]}
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal", "title": "State"},
+      {"field": "Status", "type": "nominal", "title": "Status"},
+      {"field": "Count", "type": "quantitative", "title": "Number of Presentations"}
+    ]
+  },
+  "title": {
+    "text": "Emergency Department Presentations by Status",
+    "subtitle": "Across States and Territories (2021-22)",
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "anchor": "middle"
+  }
+}
