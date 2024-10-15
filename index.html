@@ -82,7 +82,13 @@
 
     <div class="pure-g">
       <div class="pure-u-1-2">
-        <h2></h2>
+        <div id="presentations_chart" class="vis-container"></div>
+    </div> 
+    </div> 
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="visitoutcome_chart" class="vis-container"></div>
     </div> 
     </div> 
 
@@ -101,6 +107,12 @@
     }).catch(console.error);
     var spec3 = "js/waittime_chart.vg.json";
     vegaEmbed('#waittime_chart', spec3).then(function (result) {
+    }).catch(console.error);
+    var spec4 = "js/visitoutcome_chart.vg.json";
+    vegaEmbed('#visitoutcome_chart', spec4).then(function (result) {
+    }).catch(console.error);
+    var spec5 = "js/presentations_chart.vg.json";
+    vegaEmbed('#presentations_chart', spec5).then(function (result) {
     }).catch(console.error);
   </script>
 </body>

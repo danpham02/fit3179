@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 350,
-    "height": 350,
+    "width": 300,
+    "height": 300,
     "data": {
       "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-waittime.csv",
       "format": {"type": "csv"}
@@ -10,6 +10,20 @@
       {
         "fold": ["Median waiting time (minutes)", "90th percentile waiting time (minutes)"],
         "as": ["Type", "Waiting Time"]
+      },
+      {
+        "lookup": "Type",
+        "from": {
+          "data": {
+            "values": [
+              {"Type": "Median waiting time (minutes)", "NewType": "Median"},
+              {"Type": "90th percentile waiting time (minutes)", "NewType": "90th Percentile"}
+            ]
+          },
+          "key": "Type",
+          "fields": ["NewType"]
+        },
+        "as": ["Type"]
       }
     ],
     "mark": "bar",
