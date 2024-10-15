@@ -1,54 +1,61 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
-    "height": 400,
-    "data": {
-      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-presentations.csv",
-      "format": {"type": "csv"}
-    },
-    "transform": [
-      {
-        "fold": [
-          "New South Wales", 
-          "Victoria", 
-          "Queensland", 
-          "Western Australia", 
-          "South Australia", 
-          "Tasmania", 
-          "Australian Capital Territory", 
-          "Northern Territory"
-        ],
-        "as": ["State", "Presentations"]
-      }
-    ],
-    "mark": "line",
-    "encoding": {
-      "x": {
-        "field": "States",
-        "type": "nominal",
-        "axis": {"title": "Year"}
-      },
-      "y": {
-        "field": "Presentations",
-        "type": "quantitative",
-        "axis": {"title": "Emergency Department Presentations"}
-      },
-      "color": {
-        "field": "State",
-        "type": "nominal",
-        "legend": {"title": "State"}
-      },
-      "tooltip": [
-        {"field": "State", "type": "nominal", "title": "State"},
-        {"field": "States", "type": "nominal", "title": "Year"},
-        {"field": "Presentations", "type": "quantitative", "title": "Emergency Presentations"}
-      ]
-    },
-    "title": {
-      "text": "Emergency Department Presentations by State (2017-22)",
-      "fontSize": 16,
-      "fontWeight": "bold",
-      "anchor": "middle"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-presentations.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "fold": [
+        "New South Wales", 
+        "Victoria", 
+        "Queensland", 
+        "Western Australia", 
+        "South Australia", 
+        "Tasmania", 
+        "Australian Capital Territory", 
+        "Northern Territory"
+      ],
+      "as": ["State", "Presentations"]
     }
+  ],
+  "mark": {
+    "type": "line",
+    "point": {"filled": true, "size": 50}
+  },
+  "encoding": {
+    "x": {
+      "field": "States",
+      "type": "ordinal",  
+      "axis": {
+        "title": "Year",
+        "labelAngle": 0
+      },
+      "scale": {"padding": 0} 
+    },
+    "y": {
+      "field": "Presentations",
+      "type": "quantitative",
+      "axis": {"title": "Emergency Department Presentations"}
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "legend": {"title": "State"},
+      "scale": {"scheme": "category10"}
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal", "title": "State"},
+      {"field": "States", "type": "ordinal", "title": "Year"},
+      {"field": "Presentations", "type": "quantitative", "title": "Emergency Presentations"}
+    ]
+  },
+  "title": {
+    "text": "Emergency Department Presentations by State (2017-22)",
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "anchor": "middle"
   }
-  
+}
