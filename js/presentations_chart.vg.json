@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
+  "width": 700,
   "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-presentations.csv",
@@ -53,7 +53,8 @@
     ]
   },
   "title": {
-    "text": "Emergency Department Presentations by State (2013-21)",
+    "text": "Emergency Department Presentations by State",
+    "subtitle": "(2013-21)",
     "fontSize": 16,
     "fontWeight": "bold",
     "anchor": "middle"

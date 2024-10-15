@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 300,
-  "height": 300,
+  "height": 280,
   "data": {
     "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/aihw-93-Health-expenditure-datacube-2021_22_modified.csv",
     "format": {"type": "csv"}
@@ -63,8 +63,8 @@
       "type": "nominal",
       "title": "State or Territory",
       "axis": {
-        "labelAngle": -45,
-        "labelFontSize": 12
+        "labelAngle": -20,
+        "labelFontSize": 10
       }
     },
     "y": {
@@ -73,7 +73,7 @@
       "title": "Total Healthcare Expenditure (Million $)",
       "axis": {
         "format": ",f",
-        "labelFontSize": 12
+        "labelFontSize": 10
       },
       "scale": {
         "domain": [0, 30000] 
