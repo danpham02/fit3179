@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
-  "height": 700,
+  "width": 700,
+  "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/Emergency-Department-Care-2021-22-visitoutcome.csv",
     "format": {"type": "csv"}
@@ -14,12 +14,47 @@
         "Referred to another hospital for admission", 
         "Did not wait", 
         "Left at own risk", 
-        "Died in emergency department", 
-        "Dead on arrival", 
-        "Registered, advised of another health care service and left without being attended to", 
-        "Not reported"
+        "Registered, advised of another health care service and left without being attended to"
       ],
       "as": ["Status", "Count"]
+    },
+    {
+      "lookup": "Status",
+      "from": {
+        "data": {
+          "values": [
+            {"old": "Admitted to this hospital", "new": "Admitted"},
+            {"old": "Departed without being admitted or referred", "new": "Not Admitted"},
+            {"old": "Referred to another hospital for admission", "new": "Referred"},
+            {"old": "Did not wait", "new": "Did Not Wait"},
+            {"old": "Left at own risk", "new": "Left At Own Risk"},
+            {"old": "Registered, advised of another health care service and left without being attended to", "new": "Registered & Left"}
+          ]
+        },
+        "key": "old",
+        "fields": ["new"]
+      },
+      "as": ["Status"]
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "values": [
+            {"old": "NSW", "new": "New South Wales"},
+            {"old": "Vic", "new": "Victoria"},
+            {"old": "Qld", "new": "Queensland"},
+            {"old": "WA", "new": "Western Australia"},
+            {"old": "SA", "new": "South Australia"},
+            {"old": "Tas", "new": "Tasmania"},
+            {"old": "ACT", "new": "Australian Capital Territory"},
+            {"old": "NT", "new": "Northern Territory"}
+          ]
+        },
+        "key": "old",
+        "fields": ["new"]
+      },
+      "as": ["State"]
     },
     {
       "joinaggregate": [{
@@ -34,21 +69,26 @@
   ],
   "mark": "bar",
   "encoding": {
-    "x": {
+    "y": {
       "field": "State",
       "type": "nominal",
       "axis": {"title": "State or Territory"}
     },
-    "y": {
+    "x": {
       "field": "Percentage",
       "type": "quantitative",
-      "axis": {"title": "Percentage of Presentations (%)"}
+      "axis": {"title": "Percentage of Presentations (%)", "max": 100},
+      "scale": {"domain": [0, 100]}
     },
     "color": {
       "field": "Status",
       "type": "nominal",
       "legend": {"title": "Emergency Department Status"},
-      "scale": {"range": ["#FFB6C1", "#4682B4", "#FFD700", "#FF6347", "#98FB98", "#DA70D6", "#6495ED", "#8A2BE2", "#00FA9A"]}
+      "scale": {
+        "range": [
+          "#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854", "#ffd92f", "#e5c494"
+        ]
+      }
     },
     "tooltip": [
       {"field": "State", "type": "nominal", "title": "State"},
