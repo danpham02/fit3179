@@ -1,6 +1,41 @@
-﻿States,New South Wales,Victoria,Queensland,Western Australia,South Australia,Tasmania,Australian Capital Territory,Northern Territory
-2018,358.7,278.5,305,330.9,287.9,312.1,359.1,664.9
-2019,364.3,282.6,309.9,365.9,293.1,314.7,354.7,689.9
-2020,352.7,265.2,313.4,352.1,297.7,285.9,329.9,690.8
-2021,368.7,259.8,364,373,322.3,313.9,356,739.6
-2022,365.8,279.6,359.1,360.5,313.1,304.9,316.7,705
+﻿Year,State,Presentations,Presentations per 1000 Population
+2018,New South Wales,2880287,358.7
+2018,Victoria,1792906,278.5
+2018,Queensland,1512118,305
+2018,Western Australia,856707,330.9
+2018,South Australia,506494,287.9
+2018,Tasmania,162441,312.1
+2018,Australian Capital Territory,147778,359.1
+2018,Northern Territory,158761,664.9
+2019,New South Wales,2976532,364.3
+2019,Victoria,1858983,282.6
+2019,Queensland,1561825,309.9
+2019,Western Australia,954981,365.9
+2019,South Australia,519607,293.1
+2019,Tasmania,165994,314.7
+2019,Australian Capital Territory,149273,354.7
+2019,Northern Territory,164997,689.9
+2020,New South Wales,2920188,352.7
+2020,Victoria,1785135,265.2
+2020,Queensland,1606395,313.4
+2020,Western Australia,929507,352.1
+2020,South Australia,535453,297.7
+2020,Tasmania,153738,285.9
+2020,Australian Capital Territory,141020,329.9
+2020,Northern Territory,164723,690.8
+2021,New South Wales,3068572,368.7
+2021,Victoria,1772359,259.8
+2021,Queensland,1887381,364
+2021,Western Australia,997816,373
+2021,South Australia,580575,322.3
+2021,Tasmania,170287,313.9
+2021,Australian Capital Territory,153713,356
+2021,Northern Territory,177654,739.6
+2022,New South Wales,3012992,365.8
+2022,Victoria,1856312,279.6
+2022,Queensland,1867860,359.1
+2022,Western Australia,991522,360.5
+2022,South Australia,572886,313.1
+2022,Tasmania,173276,304.9
+2022,Australian Capital Territory,143693,316.7
+2022,Northern Territory,171336,705
