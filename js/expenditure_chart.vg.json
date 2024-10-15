@@ -1,69 +1,107 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 300,
-    "height": 300,
-    "data": {
-      "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/aihw-93-Health-expenditure-datacube-2021_22_modified.csv",
-      "format": {"type": "csv"}
-    },
-    "transform": [
-      {
-        "filter": "datum.Year == '2021-22'"
-      },
-      {
-        "filter": "datum.Sector == 'Hospitals'"
-      },
-      {
-        "aggregate": [
-          {"op": "sum", "field": "Current amount (million)", "as": "TotalExpenditure"}
-        ],
-        "groupby": ["Jurisdiction"]
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/danpham02/fit3179/main/data/aihw-93-Health-expenditure-datacube-2021_22_modified.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "yearSlider",
+      "value": 2022,
+      "bind": {
+        "input": "range",
+        "min": 2012,
+        "max": 2022,
+        "step": 1,
+        "name": "Select Year: "
       }
-    ],
-    "mark": {
-      "type": "bar",
-      "width": 25  
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Sector == 'Hospitals'"
     },
-    "encoding": {
-      "x": {
-        "field": "Jurisdiction",
-        "type": "nominal",
-        "title": "State or Territory",
-        "axis": {
-          "labelAngle": 0,  
-          "labelFontSize": 12  
-        }
+    {
+      "lookup": "Jurisdiction",
+      "from": {
+        "data": {
+          "values": [
+            {"Jurisdiction": "ACT", "FullName": "Australian Capital Territory"},
+            {"Jurisdiction": "NSW", "FullName": "New South Wales"},
+            {"Jurisdiction": "NT", "FullName": "Northern Territory"},
+            {"Jurisdiction": "Qld", "FullName": "Queensland"},
+            {"Jurisdiction": "SA", "FullName": "South Australia"},
+            {"Jurisdiction": "Tas", "FullName": "Tasmania"},
+            {"Jurisdiction": "Vic", "FullName": "Victoria"},
+            {"Jurisdiction": "WA", "FullName": "Western Australia"}
+          ]
+        },
+        "key": "Jurisdiction",
+        "fields": ["FullName"]
       },
-      "y": {
+      "as": ["Jurisdiction"]
+    },
+    {
+      "filter": "datum.Year == yearSlider"
+    },
+    {
+      "aggregate": [
+        {"op": "sum", "field": "Current amount (million)", "as": "TotalExpenditure"}
+      ],
+      "groupby": ["Jurisdiction"]
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "width": 25
+  },
+  "encoding": {
+    "x": {
+      "field": "Jurisdiction",
+      "type": "nominal",
+      "title": "State or Territory",
+      "axis": {
+        "labelAngle": -45,
+        "labelFontSize": 12
+      }
+    },
+    "y": {
+      "field": "TotalExpenditure",
+      "type": "quantitative",
+      "title": "Total Healthcare Expenditure (Million $)",
+      "axis": {
+        "format": ",f",
+        "labelFontSize": 12
+      },
+      "scale": {
+        "domain": [0, 30000] 
+      }
+    },
+    "color": {
+      "field": "Jurisdiction",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "scheme": "category10"
+      }
+    },
+    "tooltip": [
+      {"field": "Jurisdiction", "type": "nominal", "title": "State"},
+      {
         "field": "TotalExpenditure",
         "type": "quantitative",
-        "title": "Total Healthcare Expenditure (Million $)",
-        "axis": {
-          "format": ",f",  
-          "labelFontSize": 12
-        }
-      },
-      "color": {
-        "field": "Jurisdiction",
-        "type": "nominal",
-        "legend": null
-    },
-      "tooltip": [
-        {"field": "Jurisdiction", "type": "nominal", "title": "State"},
-        {
-          "field": "TotalExpenditure",
-          "type": "quantitative",
-          "title": "Total Expenditure ($ Millions)",
-          "format": ",.2f"  
-        }
-      ]
-    },
-    "title": {
-      "text": "Healthcare Expenditure by State (Hospitals, 2021-22)",
-      "subtitle": "Data Source: AIHW.gov.au",
-      "fontSize": 16,
-      "fontWeight": "bold",
-      "anchor": "middle"
-    }
+        "title": "Total Expenditure ($ Millions)",
+        "format": ",.2f"
+      }
+    ]
+  },
+  "title": {
+    "text": "Healthcare Expenditure by State (Hospitals, 2012-2022)",
+    "subtitle": "Data Source: AIHW.gov.au",
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "anchor": "middle"
   }
-  
+}
